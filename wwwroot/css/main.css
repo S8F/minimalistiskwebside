@@ -1,0 +1,65 @@
+﻿body {
+    overflow-x: hidden;
+}
+
+.offcanvas-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #212529;
+    color: white;
+    transition: left 0.3s ease-in-out;
+    z-index: 1050;
+}
+
+    .offcanvas-menu.active {
+        left: 0;
+    }
+
+    .offcanvas-menu a {
+        color: white;
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+    }
+
+.burger {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.cropped{
+    width:100% !important;
+    height: 185px !important;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+}
+
+    .overlay.active {
+        display: block;
+    }
+/*.card:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.card img {
+    transition: transform 0.3s ease;
+}*/
+
+.card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+        cursor:pointer;
+    }
