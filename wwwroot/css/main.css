@@ -63,3 +63,10 @@
         transform: translateY(-5px);
         cursor:pointer;
     }
+
+.footer {
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+}
