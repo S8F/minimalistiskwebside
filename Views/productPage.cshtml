@@ -3,51 +3,55 @@
 @using Umbraco.Cms.Web.Common.PublishedModels
 @using minimalistiskdotcom.api.Models
 @{
-    Layout = "Master.cshtml";
+	Layout = "Master.cshtml";
 
 
-    var productPage = UmbracoContext.Content.GetAtRoot().FirstOrDefault(x => x.ContentType.Alias == "productPage");
-    var products = productPage?.Children().ToList();
+	var productPage = UmbracoContext.Content.GetAtRoot().FirstOrDefault(x => x.ContentType.Alias == "productPage");
+	var products = productPage?.Children().ToList();
 }
 
 <main class="container py-5">
-    <h2 class="mb-4">@Model.Value("Produkter")</h2>
+	<h2 class="mb-4">@Model.Value("Produkter")</h2>
 
-    <!-- Tjek hvis produkt findes-->
-    @if (products != null && products.Any())
-    {
-        <div class="d-flex flex-column row g-4">
-            @foreach (var product in products)
-            {
-                var productImage = product.Value<IPublishedContent>("productImage");
-                var productName = product.Value<string>("productName");
-                var productDescription = product.Value<string>("description");
-                var productPrice = product.Value<decimal>("price");
+	<!-- Tjek hvis produkt findes-->
+	@if (products != null && products.Any())
+	{
+		<div class="row g-4">
+			<div class="d-flex flex-column align-items-center justify-content-center">
 
-                <div class="col-12 col-sm-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title mb-3">@productName</h5>
-                            @if (productImage != null)
-                            {
-                                <img src="@productImage.Url()" class="card-img-top cropped" alt="@productName" />
-                            }
-                            else
-                            {
-                                <img src="https://via.placeholder.com/600x400" class="card-img-top" alt="Placeholder Image" />
-                            }
+				@foreach (var product in products)
+				{
+					var productImage = product.Value<IPublishedContent>("productImage");
+					var productName = product.Value<string>("productName");
+					var productDescription = product.Value<string>("description");
+					var productPrice = product.Value<decimal>("price");
 
-                          @*   <p class="card-text">@Html.Raw(productDescription)</p> *@
-                            <p class="fw-bold mt-5">DKK @productPrice</p>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    }
-    else
-    {
-        <p>Ingen produkter fundet.</p>
-    }
+					<div class="col-10 col-md-6">
+						<div class="card shadow-sm m-2">
+							<div class="card-body">
+								<h5 class="card-title mb-3">@productName</h5>
+								@if (productImage != null)
+								{
+									<img src="@productImage.Url()" class="card-img-top cropped" alt="@productName" />
+								}
+								else
+								{
+									<img src="https://via.placeholder.com/600x400" class="card-img-top" alt="Placeholder Image" />
+								}
+
+								@*   <p class="card-text">@Html.Raw(productDescription)</p> *@
+								<p class="fw-bold mt-5">DKK @productPrice</p>
+							</div>
+						</div>
+					</div>
+
+				}
+			</div>
+		</div>
+	}
+	else
+	{
+		<p>Ingen produkter fundet.</p>
+	}
 </main>
 
