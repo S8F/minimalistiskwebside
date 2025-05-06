@@ -624,6 +624,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Service\Controllers\" />
     <Folder Include="umbraco\Data\TEMP\FileUploads\" />
     <Folder Include="umbraco\Data\TEMP\InMemoryAuto\" />
     <Folder Include="wwwroot\scss\" />
